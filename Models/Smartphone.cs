@@ -2,13 +2,33 @@ namespace DesafioPOO.Models
 {
     public abstract class Smartphone
     {
-        public string Numero { get; set; }
-        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        private string _numero;
+        public string Numero 
+        { 
+            get => _numero; 
+            
+            // Checa se o Numero possui 9 digitos
+            set
+            {
+                if(value == "" || value.Count() != 9)
+                {
+                    throw new Exception("O Numero devera possuir 9 digitos.");
+                }
+                _numero = value;
+            } 
+        }
+        private string Modelo { get; set; }
+        private string IMEI { get; set; }
+        private int Memoria { get; set; }
+        
 
-        public Smartphone(string numero)
+        public Smartphone(string numero, string modelo, string imei, int memoria)
         {
             Numero = numero;
-            // TODO: Passar os parâmetros do construtor para as propriedades
+            Modelo = modelo;
+            IMEI = imei;
+            Memoria = memoria;
+            
         }
 
         public void Ligar()
